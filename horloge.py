@@ -1,6 +1,5 @@
 
 import time
-import random
 
 global time_h
 global time_m
