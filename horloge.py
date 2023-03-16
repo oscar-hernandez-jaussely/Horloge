@@ -1,5 +1,6 @@
 
 import time
+import random
 
 global time_h
 global time_m
@@ -36,6 +37,9 @@ def f_time_create():
     global time_m
     global time_s
 
+    f_alarme()
+
+    afficher_heure()
 
     while time_s < 60 :
 
@@ -46,6 +50,9 @@ def f_time_create():
         f_time_adjust()
 
         print("Time is : " +(time_a))
+        
+        if time_a == alarme_t:
+            print("BEEP BEEP BEEP")
 
         if time_s == 59:
         
@@ -69,7 +76,7 @@ def f_time_create():
 
             f_time_adjust()
 
-            print("Time is : " +(time_a))   
+            print("Time is : " +(time_a)) 
 
         if time_h == 24:
             
@@ -79,7 +86,51 @@ def f_time_create():
 
             f_time_adjust()
 
-            print("Time is : " +(time_a))         
+            print("Time is : " +(time_a))
+
+
+
+def afficher_heure():
+
+    values = input("Entrez l'heure : ")
+
+    heure = tuple(int(val) for val in values.split())
+
+    print("L'heure choisie est : " + str(heure) )
+
+    global time_h
+    global time_m
+    global time_s
+
+    time_h = heure[0]
+    time_m = heure[1]
+    time_s = heure[2]
+
+    f_time_adjust()
+
+    print (time_a)
+
+
+def f_alarme():
+    
+    val = input("Entrez l'horaire de l'alarme : ")
+
+    alarme = tuple(int(val) for val in val.split())
+   
+    global time_h
+    global time_m
+    global time_s
+
+    time_h = alarme[0]
+    time_m = alarme[1]
+    time_s = alarme[2]
+
+    f_time_adjust()
+
+    global alarme_t
+    alarme_t = time_a
+    print(alarme_t)
+
 
 
 f_time_create()
