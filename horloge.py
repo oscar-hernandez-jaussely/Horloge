@@ -47,15 +47,8 @@ def f_time_create():
         time_s = time_s + 1
 
         f_time_adjust()
-
-        print("Time is : " +(time_a))
         
-        if time_a == alarme_t:
-            print("BEEP BEEP BEEP")
-
-        if time_s == 59:
-        
-            time.sleep(1)
+        if time_s == 60:
 
             time_s = 0
 
@@ -63,11 +56,39 @@ def f_time_create():
 
             f_time_adjust()
 
-            print("Time is : " +(time_a))    
-        
-        if time_m == 59:
-            
-            time.sleep(1)
+            if time_m == 60:
+
+                time_m = 0
+
+                time_h = time_h +1
+
+                f_time_adjust()
+
+                if time_h == 24:
+
+                    time_h = 0
+
+                    f_time_adjust()
+                    
+                    if time_a == alarme_t:
+                        print("Time is : " +(time_a))
+                        print("BEEP BEEP BEEP")
+                    else:
+                        print("Time is : " +(time_a))
+                else:
+                    if time_a == alarme_t:
+                        print("Time is : " +(time_a))
+                        print("BEEP BEEP BEEP")
+                    else:
+                        print("Time is : " +(time_a))
+            else:
+                if time_a == alarme_t:
+                    print("Time is : " +(time_a))
+                    print("BEEP BEEP BEEP")
+                else:
+                    print("Time is : " +(time_a))
+
+        elif not time_s == 60 and time_m == 60:
 
             time_m = 0
 
@@ -75,17 +96,41 @@ def f_time_create():
 
             f_time_adjust()
 
-            print("Time is : " +(time_a)) 
+            if time_h == 24:
 
-        if time_h == 24:
-            
-            time.sleep(1)
+                time_h = 0
+
+                f_time_adjust()
+
+                if time_a == alarme_t:
+                    print("Time is : " +(time_a))
+                    print("BEEP BEEP BEEP")
+                else:
+                    print("Time is : " +(time_a))
+            else:
+                if time_a == alarme_t:
+                    print("Time is : " +(time_a))
+                    print("BEEP BEEP BEEP")
+                else:
+                    print("Time is : " +(time_a))
+
+        elif not time_m == 60 and not time_s == 60 and time_h == 24:
 
             time_h = 0
 
             f_time_adjust()
 
-            print("Time is : " +(time_a))
+            if time_a == alarme_t:
+                print("Time is : " +(time_a))
+                print("BEEP BEEP BEEP")
+            else:
+                print("Time is : " +(time_a))
+        else:
+            if time_a == alarme_t:
+                print("Time is : " +(time_a))
+                print("BEEP BEEP BEEP")
+            else:
+                print("Time is : " +(time_a))
 
 
 
@@ -133,4 +178,5 @@ def f_alarme():
 
 
 f_time_create()
+
 
