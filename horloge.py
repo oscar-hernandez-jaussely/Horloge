@@ -136,7 +136,7 @@ def f_time_create():
 
 def afficher_heure():
 
-    values = input("Entrez l'heure : ")
+    values = input("Entrez l'heure (format : H M S) : ")
 
     heure = tuple(int(val) for val in values.split())
 
@@ -157,7 +157,7 @@ def afficher_heure():
 
 def f_alarme():
     
-    val = input("Entrez l'horaire de l'alarme : ")
+    val = input("Entrez l'horaire de l'alarme (format : H M S) : ")
 
     alarme = tuple(int(val) for val in val.split())
    
